@@ -9,7 +9,7 @@ double square(double x) {
     return x * x;
 }
 
-// Сравнение матриц
+// Сравнение матриц с точностью 1e-6
 int matrices_equal(Matrix *a, Matrix *b) {
     if (!a || !b) return 0;
     if (a->rows != b->rows || a->cols != b->cols) return 0;
@@ -22,7 +22,7 @@ int matrices_equal(Matrix *a, Matrix *b) {
 }
 
 int main() {
-    printf("\nTEST MATRIX.C\n\n");
+    printf("TEST MATRIX.C\n\n");
 
     // create_matrix
     Matrix *m1 = create_matrix(2, 3);
