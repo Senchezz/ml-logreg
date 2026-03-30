@@ -24,4 +24,4 @@ Matrix* mat_apply(Matrix *m, double (*func)(double));
 // Вспомогательные
 void print_matrix(Matrix *m);
 
-#endif
+#endif // MATRIX_H

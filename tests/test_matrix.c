@@ -90,6 +90,6 @@ int main() {
     free_matrix(sum);
     free_matrix(ap);
 
-    printf("\nALL TESTS DONE!!!\n");
+    printf("\nALL MATRIX TESTS DONE!!!\n");
     return 0;
 }

@@ -47,20 +47,25 @@ double f1_score(int *y_true, int *y_pred, int n) {
 }
 
 // Confusion Matrix: {TN, FP, FN, TP}
-int* confusion_matrix(int *y_true, int *y_pred, int n) {
+void confusion_matrix(int *y_true, int *y_pred, int n, int *cm) {
+    if (!y_true || !y_pred || !cm) return;
+
     int tn = 0, fp = 0, fn = 0, tp = 0;
+
     for (int i = 0; i < n; i++) {
         if (y_true[i] == 1 && y_pred[i] == 1) {
             tp++;
         } else if (y_true[i] == 1 && y_pred[i] == 0) {
             fn++;
-        } else if (y_true[i] == 0 && y_pred[i] == 1){
+        } else if (y_true[i] == 0 && y_pred[i] == 1) {
             fp++;
         } else if (y_true[i] == 0 && y_pred[i] == 0) {
             tn++;
         }
     }
-    int *cm = (int*) malloc(4 * sizeof(int));
-    cm[0] = tn; cm[1] = fp; cm[2] = fn; cm[3] = tp;
-    return cm;
+
+    cm[0] = tn;
+    cm[1] = fp;
+    cm[2] = fn;
+    cm[3] = tp;
 }

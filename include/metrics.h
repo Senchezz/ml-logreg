@@ -8,7 +8,7 @@ double precision(int *y_true, int *y_pred, int n);
 double recall(int *y_true, int *y_pred, int n);
 double f1_score(int *y_true, int *y_pred, int n);
 
-// Confusion Matrix: int[4] {TN, FP, FN, TP}
-int* confusion_matrix(int *y_true, int *y_pred, int n);
+// Confusion Matrix: cm[4] = {TN, FP, FN, TP}
+void confusion_matrix(int *y_true, int *y_pred, int n, int *cm);
 
 #endif // METRICS_H
