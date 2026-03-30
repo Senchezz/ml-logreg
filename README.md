@@ -50,7 +50,7 @@ ml_logreg/
 ### Главная программа
 
 ```bash
-git clone https://github.com/your-username/ml-logreg.git
+git clone https://github.com/Senchezz/ml-logreg
 
 cd <ваш путь к проекту>
 
