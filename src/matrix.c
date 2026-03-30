@@ -124,6 +124,23 @@ Matrix* mat_add(Matrix *a, Matrix *b) {
     return res;
 }
 
+// Вычитание матриц: res = a - b
+Matrix* mat_sub(Matrix *a, Matrix *b) {
+    if (!a || !b) return NULL;
+    if (a->rows != b->rows || a->cols != b->cols) return NULL;
+
+    Matrix *res = create_matrix(a->rows, a->cols);
+    if (!res) return NULL;
+
+    for (int i = 0; i < a->rows; i++) {
+        for (int j = 0; j < a->cols; j++) {
+            res->data[i][j] = a->data[i][j] - b->data[i][j];
+        }
+    }
+
+    return res;
+}
+
 // Применение функции к каждому элементу матрицы: res[i][j] = func(m[i][j])
 Matrix* mat_apply(Matrix *m, double (*func)(double)) {
     if (!m || !func) return NULL;
@@ -138,4 +155,36 @@ Matrix* mat_apply(Matrix *m, double (*func)(double)) {
     }
 
     return res;
+}
+
+// Сумма элементов по строкам: возвращает 1xcols
+Matrix* mat_sum_rows(Matrix *m) {
+    if (!m) return NULL;
+
+    Matrix *res = create_matrix(1, m->cols);
+    if (!res) return NULL;
+
+    for (int j = 0; j < m->cols; j++) {
+        double sum = 0;
+        for (int i = 0; i < m->rows; i++) {
+            sum += m->data[i][j];
+        }
+        res->data[0][j] = sum;
+    }
+
+    return res;
+}
+
+// Создание матрицы из массива вектора: vec[0..n-1] -> n x 1
+Matrix* vector_to_matrix(double *vec, int n) {
+    if (!vec || n <= 0) return NULL;
+
+    Matrix *m = create_matrix(n, 1);
+    if (!m) return NULL;
+
+    for (int i = 0; i < n; i++) {
+        m->data[i][0] = vec[i];
+    }
+
+    return m;
 }
