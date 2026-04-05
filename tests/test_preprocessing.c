@@ -40,14 +40,8 @@ int main() {
     free(mean);
     free(std);
     free_dataset(ds);
-
-    free(train->X);
-    free(train->y);
-    free(train);
-
-    free(test->X);
-    free(test->y);
-    free(test);
+    free_dataset(train);
+    free_dataset(test);
 
     printf("\nALL PREPROCESSING TESTS DONE!!!\n");
     return 0;
